@@ -1,8 +1,5 @@
 package com.gilberson
 
-import com.gilberson.domain.repository.PlayerRepository
-import com.gilberson.domain.repository.TeamRepository
-import com.gilberson.domain.repository.TournamentRepository
 import com.gilberson.infra.repository.PlayerRepositoryImpl
 import com.gilberson.infra.repository.TeamRepositoryImpl
 import com.gilberson.infra.repository.TournamentRepositoryImpl
@@ -10,12 +7,11 @@ import com.gilberson.presentation.controllers.PlayerController
 import com.gilberson.presentation.controllers.TeamController
 import com.gilberson.presentation.controllers.TournamentController
 import org.koin.dsl.module
-import kotlin.math.sin
 
 val repositoryModule = module {
-    //single { PlayerRepositoryImpl() }
-    //single { TeamRepository() }
-    //single { TournamentRepository() }
+//    single { PlayerRepositoryImpl() }
+//    single { TeamRepositoryImpl() }
+//    single { TournamentRepositoryImpl() }
 }
 val controllerModule = module {
 
