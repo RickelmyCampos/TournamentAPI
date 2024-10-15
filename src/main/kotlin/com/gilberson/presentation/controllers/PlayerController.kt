@@ -1,18 +1,24 @@
 package com.gilberson.presentation.controllers
 
+import com.gilberson.domain.exceptions.CustomExceptions
 import com.gilberson.domain.model.PlayerModel
 import com.gilberson.domain.repository.PlayerRepository
 
 class PlayerController(private val repository: PlayerRepository) {
 
-    fun createPlayer(player: PlayerModel) {
+    suspend fun createPlayer(player: PlayerModel) {
         repository.savePlayer(player)
         println("player: $player")
     }
 
-    fun getAllPlayers(): List<PlayerModel> {
+    suspend fun getAllPlayers(): List<PlayerModel> {
         return repository.getListPlayer()
     }
 
-    fun getPlayer(id: String): PlayerModel = repository.getPlayer(id)
+    suspend fun getPlayer(id: String): PlayerModel {
+       val player= repository.getPlayer(id)
+        player?.let {
+            return it
+        }?:throw CustomExceptions.NotFoundException("Player not found")
+    }
 }

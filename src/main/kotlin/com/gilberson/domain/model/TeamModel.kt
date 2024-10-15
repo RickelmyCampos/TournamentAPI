@@ -8,5 +8,5 @@ data class TeamModel(
     val name: String,
     val description: String,
     val modality: String,
-    val players: MutableList<PlayerModel>
+    val players: List<PlayerModel>
 )

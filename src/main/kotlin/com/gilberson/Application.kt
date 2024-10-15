@@ -14,5 +14,6 @@ fun main() {
 fun Application.module() {
     configureDi()
     configureSerialization()
+    configureDatabase()
     configureRouting()
 }

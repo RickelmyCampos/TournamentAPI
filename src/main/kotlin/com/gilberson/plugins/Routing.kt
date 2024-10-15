@@ -18,6 +18,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.jetbrains.exposed.sql.Database
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
@@ -37,7 +38,7 @@ fun Application.configureRouting() {
                     playerController.getPlayer(id)
                 }
             }
-            get("/getPlayer") {
+            get("/getAllPlayer") {
                 handleRequest {
                     playerController.getAllPlayers()
                 }
@@ -125,6 +126,7 @@ fun Application.configureDi() {
         modules(repositoryModule, controllerModule)
     }
 }
+
 
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
