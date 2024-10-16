@@ -9,6 +9,7 @@ object PlayerTable : IntIdTable("player") {
 
     val name = varchar("name", 50)
     val age = integer("age")
+
 }
 
 class PlayerDao(id: EntityID<Int>) : IntEntity(id) {
@@ -16,5 +17,6 @@ class PlayerDao(id: EntityID<Int>) : IntEntity(id) {
 
     var name by PlayerTable.name
     var age by PlayerTable.age
+    var teams by  TeamDao via PlayerTeamTable
 }
 

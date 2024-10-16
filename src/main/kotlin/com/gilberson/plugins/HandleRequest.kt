@@ -18,6 +18,7 @@ suspend fun RoutingContext.handleRequest(function: suspend () -> Any) {
             is CustomExceptions.NotFoundException -> call.respond(HttpStatusCode.NotFound, error)
         }
     }catch (ex:Exception){
+        ex.printStackTrace()
         val error = ErrorDto(isSuccess = false, message = ex.message.toString())
         call.respond(HttpStatusCode.InternalServerError, error)
     }

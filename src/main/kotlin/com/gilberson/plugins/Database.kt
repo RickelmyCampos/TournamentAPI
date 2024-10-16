@@ -1,8 +1,6 @@
 package com.gilberson.plugins
 
-import com.gilberson.infra.database.entity.PlayerTable
-import com.gilberson.infra.database.entity.TeamTable
-import com.gilberson.infra.database.entity.TournamentTable
+import com.gilberson.infra.database.entity.*
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -18,5 +16,7 @@ fun Application.configureDatabase() {
         SchemaUtils.create(PlayerTable)
         SchemaUtils.create(TeamTable)
         SchemaUtils.create(TournamentTable)
+        SchemaUtils.create(TeamTournamentTable)
+        SchemaUtils.create(PlayerTeamTable)
     }
 }

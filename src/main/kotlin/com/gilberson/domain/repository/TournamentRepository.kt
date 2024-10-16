@@ -6,6 +6,7 @@ interface TournamentRepository {
     suspend fun getAllTournaments(): List<TournamentModel>
     suspend fun getTournament(id: String): TournamentModel?
     suspend fun createTournament(tournament: TournamentModel):TournamentModel
+    suspend fun addTeamOnTournament(teamId: String, tournamentId: String)
 }
 //class TournamentRepository {
 //    fun getAllTournaments(): List<TournamentModel> {

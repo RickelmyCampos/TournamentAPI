@@ -11,4 +11,5 @@ object TournamentTable:IntIdTable("tournament") {
 class TournamentDao(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<TournamentDao>(TournamentTable)
     var name by TournamentTable.name
+    var teams by TeamDao via TeamTournamentTable
 }

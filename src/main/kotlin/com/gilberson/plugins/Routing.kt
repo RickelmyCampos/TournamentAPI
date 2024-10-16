@@ -56,7 +56,7 @@ fun Application.configureRouting() {
                     teamController.getAllTeams()
                 }
             }
-            get("/getTeamById/{id}") {
+            get("/{id}") {
                 handleRequest {
                     val id = call.parameters["id"]
                     if (id.isNullOrEmpty()) {
@@ -89,8 +89,8 @@ fun Application.configureRouting() {
                     call.respond(tournamentController.getAllTournaments())
                 }
             }
-            get("/tournament/{id}") {
-                handle {
+            get("/{id}") {
+                handleRequest {
                     val id = call.parameters["id"]
                     if (id.isNullOrEmpty()) {
                         throw CustomExceptions.BadRequestException("Bad request id")

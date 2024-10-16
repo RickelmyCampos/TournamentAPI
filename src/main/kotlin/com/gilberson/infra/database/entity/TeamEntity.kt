@@ -11,7 +11,7 @@ object TeamTable : IntIdTable("team") {
     val name = varchar("name", 50)
     val description = varchar("description", 50)
     val modality = varchar("modality", 50)
-    //val players: MutableList<PlayerModel>
+
 }
 
 class TeamDao(id: EntityID<Int>) : IntEntity(id) {
@@ -20,4 +20,6 @@ class TeamDao(id: EntityID<Int>) : IntEntity(id) {
     var name by TeamTable.name
     var description by TeamTable.description
     var modality by TeamTable.modality
+    val players by PlayerDao via PlayerTeamTable
+    var tournaments by TournamentDao via TeamTournamentTable
 }
