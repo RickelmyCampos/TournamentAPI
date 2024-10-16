@@ -25,9 +25,5 @@ class TeamController(private val teamRepository: TeamRepository, private val pla
 
     suspend fun addPlayerToTeam(idPlayer: String, idTeam: String) {
         val player = teamRepository.addPlayerOnTeam(playerId = idPlayer, teamId = idTeam)
-//        player?.let {
-//
-//            throw CustomExceptions.NotFoundException("Feature not yet implemented")
-//        } ?: throw CustomExceptions.NotFoundException("Player $idPlayer not found")
     }
 }
