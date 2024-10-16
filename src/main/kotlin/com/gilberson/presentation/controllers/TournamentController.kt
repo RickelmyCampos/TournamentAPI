@@ -32,4 +32,11 @@ class TournamentController(
         val team = tournamentRepository.addTeamOnTournament(idTeam, idTournament)
        // throw CustomExceptions.NotFoundException("Feature not yet implemented")
     }
+    suspend fun startTournament(id:String){
+        val tournament=tournamentRepository.getTournament(id)
+        tournament?.let {
+            it.listTeams
+        }
+
+    }
 }

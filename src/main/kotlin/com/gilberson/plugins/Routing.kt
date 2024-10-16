@@ -4,12 +4,9 @@ import com.gilberson.controllerModule
 import com.gilberson.domain.exceptions.CustomExceptions
 import com.gilberson.presentation.controllers.PlayerController
 import com.gilberson.presentation.controllers.TeamController
-import com.gilberson.presentation.dto.CreateTeamDto
-import com.gilberson.presentation.dto.toTeamModel
 import com.gilberson.domain.model.PlayerModel
 import com.gilberson.presentation.controllers.TournamentController
-import com.gilberson.presentation.dto.CreateTournamentDto
-import com.gilberson.presentation.dto.toModel
+import com.gilberson.presentation.dto.*
 import com.gilberson.repositoryModule
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
@@ -103,6 +100,12 @@ fun Application.configureRouting() {
                 handleRequest {
                     val team = call.receive<CreateTournamentDto>()
                     tournamentController.createTournament(team.toModel())
+                }
+            }
+            post("/start") {
+                handleRequest {
+                    val idTournament = call.receive<StartTournamentDto>()
+                    tournamentController.startTournament(idTournament.id)
                 }
             }
             post("/addTeamToTournament/{idTournament}/{idTeam}") {
