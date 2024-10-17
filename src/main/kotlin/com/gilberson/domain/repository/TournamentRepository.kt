@@ -1,12 +1,14 @@
 package com.gilberson.domain.repository
 
 
+import com.gilberson.domain.model.TeamModel
 import com.gilberson.domain.model.TournamentModel
 interface TournamentRepository {
     suspend fun getAllTournaments(): List<TournamentModel>
     suspend fun getTournament(id: String): TournamentModel?
     suspend fun createTournament(tournament: TournamentModel):TournamentModel
     suspend fun addTeamOnTournament(teamId: String, tournamentId: String)
+    suspend fun getTeams(id: String):List<TeamModel>
 }
 //class TournamentRepository {
 //    fun getAllTournaments(): List<TournamentModel> {

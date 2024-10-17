@@ -1,6 +1,7 @@
 package com.gilberson.infra.repository
 
 import com.gilberson.domain.exceptions.CustomExceptions
+import com.gilberson.domain.model.TeamModel
 import com.gilberson.domain.model.TournamentModel
 import com.gilberson.domain.repository.TournamentRepository
 import com.gilberson.infra.database.entity.*
@@ -25,7 +26,7 @@ class TournamentRepositoryImpl : TournamentRepository {
         }.toModel()
     }
 
-    override suspend fun addTeamOnTournament(teamId: String, tournamentId: String) = suspendTransaction{
+    override suspend fun addTeamOnTournament(teamId: String, tournamentId: String) = suspendTransaction {
         val team = TeamDao.find { (TeamTable.id eq teamId.toInt()) }.firstOrNull()
         if (team == null) {
             throw CustomExceptions.NotFoundException("Team with id $teamId not found")
@@ -35,6 +36,11 @@ class TournamentRepositoryImpl : TournamentRepository {
             throw CustomExceptions.NotFoundException("Team with id $tournamentId not found")
         }
         team.tournaments = SizedCollection(team.tournaments + tournament)
+    }
+
+    override suspend fun getTeams(id: String): List<TeamModel> = suspendTransaction {
+        TournamentDao.find { TournamentTable.id eq id.toInt() }.firstOrNull()?.teams?.map { it.toModel() }
+            ?: emptyList()
     }
 }
 

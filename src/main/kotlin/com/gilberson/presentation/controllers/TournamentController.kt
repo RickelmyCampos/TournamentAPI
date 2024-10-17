@@ -1,5 +1,6 @@
 package com.gilberson.presentation.controllers
 
+import com.gilberson.application.usecases.StartTournamentUseCase
 import com.gilberson.domain.exceptions.CustomExceptions
 import com.gilberson.domain.model.TeamModel
 import com.gilberson.domain.model.TournamentModel
@@ -9,7 +10,8 @@ import com.gilberson.domain.repository.TournamentRepository
 
 class TournamentController(
     private val tournamentRepository: TournamentRepository,
-    private val teamRepository: TeamRepository
+    private val teamRepository: TeamRepository,
+    private val startTournamentUseCase: StartTournamentUseCase
 ) {
 
     suspend fun getAllTournaments(): List<TournamentModel> {
@@ -33,10 +35,8 @@ class TournamentController(
        // throw CustomExceptions.NotFoundException("Feature not yet implemented")
     }
     suspend fun startTournament(id:String){
-        val tournament=tournamentRepository.getTournament(id)
-        tournament?.let {
-            it.listTeams
-        }
+
+        startTournamentUseCase(id)
 
     }
 }

@@ -1,5 +1,6 @@
 package com.gilberson.plugins
 
+import com.gilberson.appModule
 import com.gilberson.controllerModule
 import com.gilberson.domain.exceptions.CustomExceptions
 import com.gilberson.presentation.controllers.PlayerController
@@ -126,7 +127,7 @@ fun Application.configureRouting() {
 fun Application.configureDi() {
     install(Koin) {
         slf4jLogger()
-        modules(repositoryModule, controllerModule)
+        modules(appModule)
     }
 }
 
