@@ -18,7 +18,7 @@ val repositoryModule = module {
     single { TournamentRepositoryImpl() as TournamentRepository }
 }
 val useCaseModule = module {
-    single { StartTournamentUseCase(tournamentRepository = get()) }
+    single { StartTournamentUseCase(tournamentRepository = get(), clashRepository = get()) }
 }
 val controllerModule = module {
     single { PlayerController(repository = get()) }
