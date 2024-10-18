@@ -9,6 +9,7 @@ import com.gilberson.domain.model.PlayerModel
 import com.gilberson.presentation.controllers.TournamentController
 import com.gilberson.presentation.dto.*
 import com.gilberson.repositoryModule
+import io.github.cdimascio.dotenv.dotenv
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -130,7 +131,13 @@ fun Application.configureDi() {
         modules(appModule)
     }
 }
-
+fun Application.configureEnv(){
+    val dotenv= dotenv()
+    val databaseUrl=dotenv["DATABASE_URL"]
+    val databaseUser=dotenv["DATABASE_USER"]
+    val databasePass=dotenv["DATABASE_PASS"]
+    print("$databaseUrl $databaseUser $databasePass")
+}
 
 fun Application.configureSerialization() {
     install(ContentNegotiation) {

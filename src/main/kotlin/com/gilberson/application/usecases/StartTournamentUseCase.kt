@@ -24,8 +24,8 @@ class StartTournamentUseCase(
                 result = "",
                 date = "",
                 tournamentId = tournament.id,
-                teamOneId = "",
-                teamTwoId = ""
+                teamOneId = listTeams[0].id,
+                teamTwoId = listTeams[1].id,
             )
         )
     }

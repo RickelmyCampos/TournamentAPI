@@ -3,6 +3,7 @@ val logback_version: String by project
 val koin_ktor: String by project
 val postgresql_driver_version: String by project
 val exposed_version: String by project
+val env_version: String by project
 
 plugins {
     kotlin("jvm") version "2.0.20"
@@ -43,4 +44,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+
+    implementation("io.github.cdimascio:dotenv-kotlin:$env_version")
 }

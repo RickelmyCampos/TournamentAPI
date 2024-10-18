@@ -22,4 +22,5 @@ class TeamDao(id: EntityID<Int>) : IntEntity(id) {
     var modality by TeamTable.modality
     val players by PlayerDao via PlayerTeamTable
     var tournaments by TournamentDao via TeamTournamentTable
+    var clash by ClashDao via ClashTable
 }
