@@ -123,7 +123,6 @@ fun Application.configureRouting() {
         }
     }
 }
-
 fun Application.configureDi() {
     install(Koin) {
         slf4jLogger()

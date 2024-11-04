@@ -18,5 +18,6 @@ fun Application.configureDatabase() {
         SchemaUtils.create(TournamentTable)
         SchemaUtils.create(TeamTournamentTable)
         SchemaUtils.create(PlayerTeamTable)
+        SchemaUtils.create(ClashTable)
     }
 }

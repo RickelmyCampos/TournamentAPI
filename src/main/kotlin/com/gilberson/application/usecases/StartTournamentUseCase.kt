@@ -17,16 +17,24 @@ class StartTournamentUseCase(
         if (listTeams.size < 2) {
             throw CustomExceptions.BadRequestException("Teams size must be greater than 2")
         }
-        clashRepository.saveClash(
-            ClashModel(
-                id = "",
-                status = "",
-                result = "",
-                date = "",
-                tournamentId = tournament.id,
-                teamOneId = "",
-                teamTwoId = ""
+        listTeams.shuffled()
+        var clash: MutableList<Pair<TeamModel, TeamModel>> = mutableListOf()
+        for (i in listTeams.indices step 2) {
+            clash.add(listTeams[i] to listTeams[i+1])
+        }
+        clash.forEach {
+            clashRepository.saveClash(
+                ClashModel(
+                    id = "0",
+                    status = "Iniciado",
+                    result = "0",
+                    date = "hoje",
+                    tournamentId = tournament.id,
+                    teamOneId = it.first.id,
+                    teamTwoId =  it.second.id
+                )
             )
-        )
+        }
+
     }
 }

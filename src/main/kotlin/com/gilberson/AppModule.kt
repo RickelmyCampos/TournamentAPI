@@ -1,9 +1,11 @@
 package com.gilberson
 
 import com.gilberson.application.usecases.StartTournamentUseCase
+import com.gilberson.domain.repository.ClashRepository
 import com.gilberson.domain.repository.PlayerRepository
 import com.gilberson.domain.repository.TeamRepository
 import com.gilberson.domain.repository.TournamentRepository
+import com.gilberson.infra.repository.ClashRepositoryImpl
 import com.gilberson.infra.repository.PlayerRepositoryImpl
 import com.gilberson.infra.repository.TeamRepositoryImpl
 import com.gilberson.infra.repository.TournamentRepositoryImpl
@@ -16,9 +18,10 @@ val repositoryModule = module {
     single { PlayerRepositoryImpl() as PlayerRepository }
     single { TeamRepositoryImpl() as TeamRepository }
     single { TournamentRepositoryImpl() as TournamentRepository }
+    single { ClashRepositoryImpl() as ClashRepository }
 }
 val useCaseModule = module {
-    single { StartTournamentUseCase(tournamentRepository = get()) }
+    single { StartTournamentUseCase(tournamentRepository = get(), clashRepository = get()) }
 }
 val controllerModule = module {
     single { PlayerController(repository = get()) }

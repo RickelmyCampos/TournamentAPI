@@ -14,7 +14,7 @@ object ClashTable: IntIdTable("clash") {
     val teamOne =reference("team_one_id", TeamTable)
     val teamTwo=reference("team_two_id", TeamTable)
     val result=varchar("result", 50)
-    val status=varchar("result", 50)
+    val status=varchar("status", 50)
 }
 
 class ClashDao(id: EntityID<Int>) : IntEntity(id) {
