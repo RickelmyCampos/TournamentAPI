@@ -18,5 +18,6 @@ class PlayerDao(id: EntityID<Int>) : IntEntity(id) {
     var name by PlayerTable.name
     var age by PlayerTable.age
     var teams by  TeamDao via PlayerTeamTable
+
 }
 

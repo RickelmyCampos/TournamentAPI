@@ -5,7 +5,6 @@ import com.gilberson.domain.repository.ClashRepository
 import com.gilberson.infra.database.entity.*
 import com.gilberson.infra.database.entity.ClashTable.reference
 import com.gilberson.infra.database.entity.ClashTable.varchar
-import com.gilberson.infra.extensions.suspendTransaction
 
 class ClashRepositoryImpl : ClashRepository {
     override suspend fun saveClash(clash: ClashModel):Unit = suspendTransaction{
